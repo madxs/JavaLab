@@ -13,17 +13,17 @@ public class ChopStick {
             this.id = id;
     }
 
-    public boolean pickUp(Philisopher who, String where) throws InterruptedException {
+    public boolean pickUp(Philisopher philosoph, String location) throws InterruptedException {
         if (up.tryLock(10, TimeUnit.MILLISECONDS)) {
-            System.out.println(who + " picked up " + where + " " + this);
+            System.out.println(philosoph + " picked up " + location + " " + this);
             return true;
         }
         return false;
     }
 
-    public void putDown(Philisopher who, String name) {
+    public void putDown(Philisopher philosoph, String name) {
         up.unlock();
-        System.out.println(who + " put down " + name + " " + this);
+        System.out.println(philosoph + " put down " + name + " " + this);
     }
 
     @Override
